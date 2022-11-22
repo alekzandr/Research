@@ -1,6 +1,7 @@
 # LightNeuron
 
-- GetAdapterInfo
+- GetAdaptersInfo
+- GetComputerName
 
 
 References:
