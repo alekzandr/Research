@@ -1,0 +1,61 @@
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.IO;
+using System.Text;
+
+namespace TcpServer
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Parse the IP address to bind to from the command line arguments.
+            if (args.Length != 1)
+            {
+                Console.WriteLine("Usage: TcpServer.exe <bind_ip_address>");
+                return;
+            }
+
+            IPAddress ipAddress = IPAddress.Parse(args[0]);
+
+            // Set the listening port on the remote host.
+            int port = 8080;
+
+            // Create a new TCP listener.
+            TcpListener listener = new TcpListener(ipAddress, port);
+
+            // Start listening for incoming connections.
+            listener.Start();
+
+            // Continuously listen for incoming connections and handle them.
+            while (true)
+            {
+                // Accept an incoming connection.
+                TcpClient client = listener.AcceptTcpClient();
+
+                // Get the stream used to read and write data to the client.
+                NetworkStream stream = client.GetStream();
+
+                // Prompt the user to enter a command to send to the client.
+                Console.Write("Enter a command to send to the client: ");
+                string command = Console.ReadLine();
+
+                // Send the command to the client.
+                byte[] buffer = Encoding.UTF8.GetBytes(command);
+                stream.Write(buffer, 0, buffer.Length);
+
+                // Read the response from the client.
+                buffer = new byte[1024];
+                int bytesRead = stream.Read(buffer, 0, buffer.Length);
+                string response = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+
+                // Print the response from the client.
+                Console.WriteLine("Response from client: " + response);
+
+                // Close the connection to the client.
+                client.Close();
+            }
+        }
+    }
+}
