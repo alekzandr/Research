@@ -10,7 +10,7 @@
 
 ## Usage
 ```
-FileFinder.exe *SECRET* .\ 5000
+FileFinder.exe <File_Name> <Path> <Sleep_Time_In_Milliseconds>
 ```
 
 ![Output](./Output.JPG)
