@@ -1,0 +1,32 @@
+# Change this value to the desired user account (DOMAIN\Username)
+$userAccount = "YourDomain\YourUsername"
+
+# Grant SeAssignPrimaryTokenPrivilege (Replace a process level token)
+$privilege1 = "SeAssignPrimaryTokenPrivilege"
+
+$securitySettings = secedit /export /cfg "$env:TEMP\securitysettings.inf"
+$securitySettingsContent = Get-Content -Path "$env:TEMP\securitysettings.inf" -Encoding Unicode
+
+if ($securitySettingsContent -notcontains "SeAssignPrimaryTokenPrivilege = *$userAccount") {
+    $newContent = $securitySettingsContent -replace "SeAssignPrimaryTokenPrivilege =", "SeAssignPrimaryTokenPrivilege = *$userAccount,"
+    $newContent | Set-Content -Path "$env:TEMP\securitysettings.inf" -Encoding Unicode
+    secedit /configure /db "$env:TEMP\updatedsecurity.sdb" /cfg "$env:TEMP\securitysettings.inf" /areas USER_RIGHTS /quiet
+}
+
+# Grant SeIncreaseQuotaPrivilege (Adjust memory quotas for a process)
+$privilege2 = "SeIncreaseQuotaPrivilege"
+
+$securitySettings = secedit /export /cfg "$env:TEMP\securitysettings.inf"
+$securitySettingsContent = Get-Content -Path "$env:TEMP\securitysettings.inf" -Encoding Unicode
+
+if ($securitySettingsContent -notcontains "SeIncreaseQuotaPrivilege = *$userAccount") {
+    $newContent = $securitySettingsContent -replace "SeIncreaseQuotaPrivilege =", "SeIncreaseQuotaPrivilege = *$userAccount,"
+    $newContent | Set-Content -Path "$env:TEMP\securitysettings.inf" -Encoding Unicode
+    secedit /configure /db "$env:TEMP\updatedsecurity.sdb" /cfg "$env:TEMP\securitysettings.inf" /areas USER_RIGHTS /quiet
+}
+
+# Cleanup
+Remove-Item -Path "$env:TEMP\securitysettings.inf"
+Remove-Item -Path "$env:TEMP\updatedsecurity.sdb"
+
+Write-Host "Privileges granted. You may need to restart your computer for the changes to take effect."

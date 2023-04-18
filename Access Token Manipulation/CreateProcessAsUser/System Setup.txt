@@ -1,0 +1,8 @@
+To grant the privileges to the user account:
+
+Press Win + R, type secpol.msc, and press Enter to open the Local Security Policy editor.
+Expand Local Policies and click on User Rights Assignment.
+Locate and double-click Replace a process level token.
+Click Add User or Group... and add the user account running the program.
+Click OK and close the Local Security Policy editor.
+Perform the same steps for Adjust memory quotas for a process.
