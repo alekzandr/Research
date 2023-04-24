@@ -3,6 +3,9 @@
 #include <sddl.h>
 #include <TlHelp32.h>
 #include <Ntsecapi.h>
+#include <chrono>
+#include <thread>
+#include <string>
 
 void print_privileges(HANDLE token) {
     DWORD privileges_size = 0;
@@ -28,6 +31,36 @@ void print_privileges(HANDLE token) {
         free(lsa_string.Buffer);
     }
     free(privileges);
+}
+
+void prompt_user_to_continue() {
+    std::string input;
+
+    std::cout << "Enter \"Yes\" to continue immediately, or wait for 1 minute to continue automatically: ";
+    auto start = std::chrono::steady_clock::now();
+
+    while (true) {
+        if (std::cin.peek() != EOF) {
+            std::cin >> input;
+            if (input == "Yes") {
+                std::cout << "Continuing immediately." << std::endl;
+                break;
+            }
+            else {
+                std::cout << "Invalid input. Enter \"Yes\" to continue immediately: ";
+            }
+        }
+
+        auto now = std::chrono::steady_clock::now();
+        auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - start);
+
+        if (elapsed.count() >= 60) {
+            std::cout << "1 minute has passed. Continuing automatically." << std::endl;
+            break;
+        }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
 }
 
 int main(int argc, char* argv[]) {
@@ -79,6 +112,10 @@ int main(int argc, char* argv[]) {
     }
 
     std::wcout << L"Successfully created notepad.exe with the duplicated token." << std::endl;
+
+    prompt_user_to_continue();
+    std::cout << "Continuing with the rest of the program." << std::endl;
+
 
     // Close the handles to avoid resource leaks
     CloseHandle(duplicated_token);
