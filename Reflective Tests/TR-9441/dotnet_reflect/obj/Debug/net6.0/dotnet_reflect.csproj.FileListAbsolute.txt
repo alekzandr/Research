@@ -1,0 +1,15 @@
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\bin\Debug\net6.0\dotnet_reflect.exe
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\bin\Debug\net6.0\dotnet_reflect.deps.json
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\bin\Debug\net6.0\dotnet_reflect.runtimeconfig.json
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\bin\Debug\net6.0\dotnet_reflect.dll
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\bin\Debug\net6.0\dotnet_reflect.pdb
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\obj\Debug\net6.0\dotnet_reflect.csproj.AssemblyReference.cache
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\obj\Debug\net6.0\dotnet_reflect.GeneratedMSBuildEditorConfig.editorconfig
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\obj\Debug\net6.0\dotnet_reflect.AssemblyInfoInputs.cache
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\obj\Debug\net6.0\dotnet_reflect.AssemblyInfo.cs
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\obj\Debug\net6.0\dotnet_reflect.csproj.CoreCompileInputs.cache
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\obj\Debug\net6.0\dotnet_reflect.dll
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\obj\Debug\net6.0\refint\dotnet_reflect.dll
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\obj\Debug\net6.0\dotnet_reflect.pdb
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\obj\Debug\net6.0\dotnet_reflect.genruntimeconfig.cache
+Z:\sektor7\Research\Reflective Tests\TR-9441\dotnet_reflect\obj\Debug\net6.0\ref\dotnet_reflect.dll
