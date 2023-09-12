@@ -9,3 +9,8 @@ Body of research related to different TTPs.
 - DuplicateToken
 - ImpersonateLoggedOnUser
 - RunImpersonated
+- AccessTokens
+- Mockingjay
+- Process Injection
+- ReflectiveLoading
+  
