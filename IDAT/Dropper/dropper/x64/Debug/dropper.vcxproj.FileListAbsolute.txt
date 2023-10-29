@@ -1,0 +1,5 @@
+Z:\1. Research\Research\IDAT\Dropper\dropper\x64\Debug\dropper.vcxproj.CopyComplete
+Z:\1. Research\Research\IDAT\Dropper\dropper\x64\Debug\dropper.exe
+Z:\1. Research\Research\IDAT\Dropper\dropper\x64\Debug\libcrypto-3-x64.dll
+Z:\1. Research\Research\IDAT\Dropper\dropper\x64\Debug\libcurl-d.dll
+Z:\1. Research\Research\IDAT\Dropper\dropper\x64\Debug\zlibd1.dll
