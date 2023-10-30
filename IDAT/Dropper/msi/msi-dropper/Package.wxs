@@ -11,6 +11,8 @@
 			  <Directory Id="INSTALLFOLDER" Name="Imperial Light">
 				  <Component Id="AppComponent" Guid="{C891B573-F558-4721-8B17-A1362CC6D753}">
 					  <File Id="VMwareHostOpen_exe" Name="VMwareHostOpen.exe" Source="Z:\1. Research\Research\IDAT\Dropper\VMwareHostOpen\VMwareHostOpen.exe" KeyPath="yes"/>
+					  <File Id="vmtools_dll" Name="vmtools.dll" Source="Z:\1. Research\Research\IDAT\Dropper\VMwareHostOpen\vmtools.dll" KeyPath="no"/>
+					  <File Id="vmo_log" Name="vmo.log" Source="Z:\1. Research\Research\IDAT\Dropper\VMwareHostOpen\vmo.log" KeyPath="no"/>
 				  </Component>
 			  </Directory>
 		  </Directory>
