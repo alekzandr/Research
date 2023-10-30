@@ -1,5 +1,3 @@
-﻿  Downloader.cpp
-  main.cpp
-  Generating Code...
+﻿  main.cpp
 LINK : warning LNK4076: invalid incremental status file 'x64\Debug\dropper.ilk' (which will be deleted); linking nonincrementally
   dropper.vcxproj -> Z:\1. Research\Research\IDAT\Dropper\dropper\x64\Debug\dropper.exe

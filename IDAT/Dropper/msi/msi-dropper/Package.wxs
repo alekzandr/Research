@@ -1,0 +1,32 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="msi_dropper" Manufacturer="TODO Manufacturer" Version="1.0.0.0" UpgradeCode="be05069c-2f66-4f0c-8b3b-3fcf4627eed9">
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+
+	  <Feature Id="ProductFeature" Title="MainFeature" Level="1">
+		  <ComponentRef Id="AppComponent" />
+	  </Feature>
+
+	  <Directory Id="TARGETDIR" Name="SourceDir">
+		  <Directory Id="ProgramFilesFolder">
+			  <Directory Id="INSTALLFOLDER" Name="Imperial Light">
+				  <Component Id="AppComponent" Guid="{C891B573-F558-4721-8B17-A1362CC6D753}">
+					  <File Id="VMwareHostOpen_exe" Name="VMwareHostOpen.exe" Source="Z:\1. Research\Research\IDAT\Dropper\VMwareHostOpen\VMwareHostOpen.exe" KeyPath="yes"/>
+				  </Component>
+			  </Directory>
+		  </Directory>
+	  </Directory>
+
+	  <!-- Custom action to run the exe -->
+	  <CustomAction Id="RegisterEXE"
+                  Directory="INSTALLFOLDER"
+                  ExeCommand="&quot;[INSTALLDIR]VMwareHostOpen.exe&quot;"
+                  Execute="deferred"
+                  Return="ignore"
+                  Impersonate="no"
+                 />
+
+	  <InstallExecuteSequence>
+		  <Custom Action='RegisterEXE' After='InstallFiles' />
+	  </InstallExecuteSequence>
+  </Package>
+</Wix>

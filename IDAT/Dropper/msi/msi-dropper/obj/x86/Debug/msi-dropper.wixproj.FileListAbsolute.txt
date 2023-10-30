@@ -1,0 +1,8 @@
+Z:\1. Research\Research\IDAT\Dropper\msi\msi-dropper\obj\x86\Debug\msi-dropper.wixproj.CoreCompileInputs.cache
+Z:\1. Research\Research\IDAT\Dropper\msi\msi-dropper\bin\x86\Debug\en-US\msi-dropper.msi
+Z:\1. Research\Research\IDAT\Dropper\msi\msi-dropper\bin\x86\Debug\en-US\cab1.cab
+Z:\1. Research\Research\IDAT\Dropper\msi\msi-dropper\bin\x86\Debug\en-US\msi-dropper.wixpdb
+Z:\1. Research\Research\IDAT\Dropper\msi\msi-dropper\obj\x86\Debug\en-US\cab1.cab
+Z:\1. Research\Research\IDAT\Dropper\msi\msi-dropper\obj\x86\Debug\en-US\msi-dropper.msi
+Z:\1. Research\Research\IDAT\Dropper\msi\msi-dropper\obj\x86\Debug\en-US\msi-dropper.wixpdb
+Z:\1. Research\Research\IDAT\Dropper\msi\msi-dropper\obj\x86\Debug\msi-dropper.wixproj.BindTracking-en-US.txt

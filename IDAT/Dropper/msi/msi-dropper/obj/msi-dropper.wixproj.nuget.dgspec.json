@@ -1,0 +1,55 @@
+{
+  "format": 1,
+  "restore": {
+    "Z:\\1. Research\\Research\\IDAT\\Dropper\\msi\\msi-dropper\\msi-dropper.wixproj": {}
+  },
+  "projects": {
+    "Z:\\1. Research\\Research\\IDAT\\Dropper\\msi\\msi-dropper\\msi-dropper.wixproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "Z:\\1. Research\\Research\\IDAT\\Dropper\\msi\\msi-dropper\\msi-dropper.wixproj",
+        "projectName": "msi-dropper",
+        "projectPath": "Z:\\1. Research\\Research\\IDAT\\Dropper\\msi\\msi-dropper\\msi-dropper.wixproj",
+        "packagesPath": "C:\\Users\\gravemind\\.nuget\\packages\\",
+        "outputPath": "Z:\\1. Research\\Research\\IDAT\\Dropper\\msi\\msi-dropper\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\gravemind\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "native"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "native": {
+            "targetAlias": "native",
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "native": {
+          "targetAlias": "native"
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-arm64": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
