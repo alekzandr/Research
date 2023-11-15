@@ -1,0 +1,3 @@
+﻿  main.cpp
+LINK : warning LNK4076: invalid incremental status file 'x64\Debug\lsass_dump.ilk' (which will be deleted); linking nonincrementally
+  lsass_dump.vcxproj -> Z:\1. Research\Research\LSASS Dump\lsass_dump\x64\Debug\lsass_dump.exe
