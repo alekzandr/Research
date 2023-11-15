@@ -1,0 +1,6 @@
+﻿  main.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 431 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  DeleteUserProfile.vcxproj -> Z:\1. Research\APT18\DoNotRun\DeleteUserProfile\x64\Release\DeleteUserProfile.exe
