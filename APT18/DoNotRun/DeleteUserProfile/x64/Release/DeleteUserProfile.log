@@ -1,7 +1,7 @@
 ﻿  main.cpp
   Generating code
   Finished generating code
-  181 of 553 functions (32.7%) were compiled, the rest were copied from previous compilation.
-    111 functions were new in current compilation
-    83 functions had inline decision re-evaluated but remain unchanged
+  245 of 444 functions (55.2%) were compiled, the rest were copied from previous compilation.
+    26 functions were new in current compilation
+    37 functions had inline decision re-evaluated but remain unchanged
   DeleteUserProfile.vcxproj -> Z:\1. Research\APT18\DoNotRun\DeleteUserProfile\x64\Release\DeleteUserProfile.exe

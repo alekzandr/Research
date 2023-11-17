@@ -7,20 +7,31 @@
 namespace fs = std::filesystem;
 
 void DeleteFilesAndDirs(const fs::path& path, const fs::path& excludePath) {
-    for (const auto& entry : fs::recursive_directory_iterator(path)) {
-        // Skip the file if it's the excluded path or if it's a system or hidden file
-        DWORD attributes = GetFileAttributes(entry.path().c_str());
-        if (entry.path() == excludePath || attributes & (FILE_ATTRIBUTE_SYSTEM | FILE_ATTRIBUTE_HIDDEN)) {
-            std::wcout << L"Skipping file or directory: " << entry.path() << std::endl;
-            continue;
-        }
+    if (!fs::exists(path) || path == excludePath) {
+        return;
+    }
 
-        // Attempt to delete the file or directory
+    for (const auto& entry : fs::directory_iterator(path, fs::directory_options::skip_permission_denied)) {
         try {
-            fs::remove_all(entry.path());
+            if (fs::is_directory(entry)) {
+                DeleteFilesAndDirs(entry.path(), excludePath);
+            }
+            else {
+                fs::remove(entry.path());
+            }
         }
-        catch (const std::filesystem::filesystem_error& e) {
-            std::wcerr << L"Failed to delete: " << entry.path() << L" - " << e.what() << std::endl;
+        catch (const fs::filesystem_error& e) {
+            std::wcerr << L"Failed to delete: " << entry.path().wstring() << L" - " << e.what() << std::endl;
+        }
+    }
+
+    // Attempt to delete the directory itself if it's not the excludePath
+    if (path != excludePath) {
+        try {
+            fs::remove(path);
+        }
+        catch (const fs::filesystem_error& e) {
+            std::wcerr << L"Failed to delete directory: " << path.wstring() << L" - " << e.what() << std::endl;
         }
     }
 }
