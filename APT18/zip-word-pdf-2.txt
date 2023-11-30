@@ -1,0 +1,20 @@
+# Get the current user's profile folder
+$userProfile = [System.Environment]::GetFolderPath('UserProfile')
+
+# Define the target zip file path and name
+$zipFilePath = "C:\Users\Public\1adsf12fd.zip"
+
+# Search for Word and PDF files in the user's profile directory and its subdirectories
+# Store the file paths in an array
+$filesToArchive = Get-ChildItem -Path $userProfile -Recurse -File -Include *.docx, *.pdf
+
+# Check if any files were found
+if ($filesToArchive.Count -gt 0) {
+    # Create a new zip file or overwrite if it already exists
+    # Using Compress-Archive for simplicity
+    Compress-Archive -Path $filesToArchive.FullName -DestinationPath $zipFilePath -Force
+
+    Write-Host "Archiving complete. Files are saved in: $zipFilePath"
+} else {
+    Write-Host "No Word or PDF files found in the current user's profile directory."
+}

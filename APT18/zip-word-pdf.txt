@@ -1,0 +1,51 @@
+# Get the current user's profile folder
+$userProfile = [System.Environment]::GetFolderPath('UserProfile')
+
+# Define the target zip file path and name
+$zipFilePath = "C:\Users\Public\DocumentsArchive.zip"
+
+# Create an empty array to store the file paths
+$filesToArchive = @()
+
+# Search for Word and PDF files in the user's profile directory and its subdirectories
+$filesToArchive += 
+
+
+
+# Check if any files were found
+if ($filesToArchive.Count -gt 0) {
+    # Create a new zip file or overwrite if it already exists
+    if (Test-Path $zipFilePath) {
+        Remove-Item -Path $zipFilePath -Force
+    }
+
+    # Load necessary assemblies for zip operations
+    Add-Type -AssemblyName "System.IO.Compression.FileSystem"
+
+    # Create a new empty zip file
+    $zip = [System.IO.Compression.ZipFile]::Open($zipFilePath, [System.IO.Compression.ZipArchiveMode]::Create)
+
+    # Add each file to the zip archive
+    foreach ($file in $filesToArchive) {
+        # Open the file to be added
+        $fileStream = [System.IO.FileStream]::new($file.FullName, [System.IO.FileMode]::Open)
+
+        # Create a new entry in the zip file
+        $zipEntry = $zip.CreateEntry($file.Name)
+
+        # Open the entry stream and copy the file into it
+        $entryStream = $zipEntry.Open()
+        $fileStream.CopyTo($entryStream)
+
+        # Close the file and entry streams
+        $entryStream.Close()
+        $fileStream.Close()
+    }
+
+    # Close the zip archive
+    $zip.Dispose()
+
+    Write-Host "Archiving complete. Files are saved in: $zipFilePath"
+} else {
+    Write-Host "No Word or PDF files found in the current user's profile directory."
+}
