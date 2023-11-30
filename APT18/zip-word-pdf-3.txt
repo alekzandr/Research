@@ -1,0 +1,34 @@
+# Function to generate a random 6-digit alphanumeric string
+function Generate-RandomString {
+    $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    $random = new-object System.Random
+    $result = ""
+    for ($i = 0; $i -lt 6; $i++) {
+        $result += $chars[$random.Next($chars.Length)]
+    }
+    return $result
+}
+
+# Generate a random file name
+$randomFileName = Generate-RandomString
+
+# Define the target zip file path and name with the random file name
+$zipFilePath = "C:\Users\Public\$randomFileName.zip"
+
+# Use cmd.exe to enumerate .doc and .pdf files, capturing the output
+$docFiles = cmd.exe /c dir c:\*.doc /s /b
+$pdfFiles = cmd.exe /c dir c:\*.pdf /s /b
+
+# Combine the file lists
+$filesToArchive = $docFiles + $pdfFiles
+
+# Check if any files were found
+if ($filesToArchive.Count -gt 0) {
+    # Create a new zip file or overwrite if it already exists
+    # Using Compress-Archive for simplicity
+    Compress-Archive -Path $filesToArchive -DestinationPath $zipFilePath -Force
+
+    Write-Host "Archiving complete. Files are saved in: $zipFilePath"
+} else {
+    Write-Host "No .doc or .pdf files found in the C: drive."
+}
