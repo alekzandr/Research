@@ -1,0 +1,67 @@
+<#
+.SYNOPSIS
+Encodes and decodes strings using a custom method.
+
+.DESCRIPTION
+The script contains two functions: Encode-String and Decode-ObfuscatedString.
+Encode-String converts each character of a string into a numeric code.
+Decode-ObfuscatedString reverses this process to retrieve the original string.
+
+.EXAMPLE
+$stringToEncode = "Hello World"
+$encodedResult = Encode-String -StringToEncode $stringToEncode
+Write-Host "Encoded String: $($encodedResult.EncodedString)"
+Write-Host "Index Array: $($encodedResult.IndexArray -join ', ')"
+$decodedString = Decode-ObfuscatedString -Array $encodedResult.IndexArray -EncodedString $encodedResult.EncodedString
+Write-Host "Decoded String: $decodedString"
+#>
+
+function Encode-String {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$StringToEncode
+    )
+
+    $encodedString = ""
+    $indexArray = @()
+
+    foreach ($index in 0..($StringToEncode.Length - 1)) {
+        $charCode = [int][char]$StringToEncode[$index]
+        $encodedValue = $charCode - 29
+        $encodedString += "{0:D2}" -f $encodedValue
+        $indexArray += $index
+    }
+
+    return @{
+        EncodedString = $encodedString
+        IndexArray = $indexArray
+    }
+}
+
+function Decode-ObfuscatedString {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true)]
+        [int[]]$Array,
+
+        [Parameter(Mandatory=$true)]
+        [string]$EncodedString
+    )
+
+    $decodedString = ""
+    foreach ($index in $Array) {
+        $charCode = [int](29 + $EncodedString.Substring($index * 2, 2))
+        $decodedString += [char]$charCode
+    }
+
+    return $decodedString
+}
+
+# Example usage
+$stringToEncode = "Hello World"
+$encodedResult = Encode-String -StringToEncode $stringToEncode
+Write-Host "Encoded String: $($encodedResult.EncodedString)"
+Write-Host "Index Array: $($encodedResult.IndexArray -join ', ')"
+$decodedString = Decode-ObfuscatedString -Array $encodedResult.IndexArray -EncodedString $encodedResult.EncodedString
+Write-Host "Decoded String: $decodedString"
