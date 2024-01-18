@@ -1,8 +1,0 @@
-
-User accounts for \\DESKTOP-L37GFAJ
-
--------------------------------------------------------------------------------
-Administrator            DefaultAccount           gravemind                
-Guest                    tbrady                   WDAGUtilityAccount       
-The command completed successfully.
-
