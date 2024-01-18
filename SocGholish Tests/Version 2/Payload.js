@@ -1,0 +1,1 @@
+var shell = new ActiveXObject("WScript.Shell"); var command = "cmd.exe /C net user > output.txt"; shell.Run(command);
