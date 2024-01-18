@@ -74,9 +74,6 @@ function downloadAndExecuteNirCmd(nirCmdUrl) {
     }
 }
 
-// Usage
-var nirCmdUrl = "https://yourdomain.com/path/to/nircmd.exe"; // Replace with your actual URL
-downloadAndExecuteNirCmd(nirCmdUrl);
 
 
 var mapping = {
