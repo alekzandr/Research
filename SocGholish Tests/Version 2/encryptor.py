@@ -16,7 +16,7 @@ def simple_encrypt(input_str, cycles):
     return base64_encoded_result
 
 # Example usage
-input_string = "new "
+input_string = 'var shell = new ActiveXObject("WScript.Shell"); var command = "cmd.exe /C net share  > shares.txt"; shell.Run(command);'
 cycles = 4  # Number of cycles for encryption
 
 encrypted = simple_encrypt(input_string,cycles)
