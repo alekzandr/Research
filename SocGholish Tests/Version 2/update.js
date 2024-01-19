@@ -86,7 +86,7 @@ if (XmlHttp_Object.status === 200) {
     // Optionally, save to a local file
     var fso = new ActiveXObject("Scripting.FileSystemObject");
     var tempFolder = fso.GetSpecialFolder(2); // Temporary Folder
-    var tempFile = fso.BuildPath(tempFolder.Path, "cab.js");
+    var tempFile = fso.BuildPath(tempFolder.Path, "cxb.js");
     var file = fso.CreateTextFile(tempFile, true);
     file.Write(scriptContent);
     file.Close();
