@@ -1,0 +1,8 @@
+﻿cl : command line  warning D9025: overriding '/DUNICODE' with '/UUNICODE'
+cl : command line  warning D9025: overriding '/D_UNICODE' with '/U_UNICODE'
+  main.cpp
+  Generating code
+  Finished generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 7 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  HeavensGate.vcxproj -> Z:\1. Research\Research\IDAT\HeavensGate\Release\HeavensGate.exe

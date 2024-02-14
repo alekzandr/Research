@@ -1,0 +1,3 @@
+﻿  main.cpp
+Z:\1. Research\Research\Reflective Tests\TR-9439\ThreadHijacking\main.cpp(71,10): error C2039: 'Rip': is not a member of '_CONTEXT'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\winnt.h(8236,35): message : see declaration of '_CONTEXT'

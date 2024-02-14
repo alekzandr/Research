@@ -1,0 +1,16 @@
+﻿  main.c
+Z:\1. Research\maldevacademy\RemoteThreadHijacking\RemoteThreadHijacking\RemoteThreadHijacking\main.c(83,3): warning C4133: 'function': incompatible types - from 'STARTUPINFO *' to 'LPSTARTUPINFOA'
+Z:\1. Research\maldevacademy\RemoteThreadHijacking\RemoteThreadHijacking\RemoteThreadHijacking\main.c(98,19): warning C4047: '!=': 'DWORD' differs in levels of indirection from 'void *'
+Z:\1. Research\maldevacademy\RemoteThreadHijacking\RemoteThreadHijacking\RemoteThreadHijacking\main.c(128,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'SIZE_T'
+Z:\1. Research\maldevacademy\RemoteThreadHijacking\RemoteThreadHijacking\RemoteThreadHijacking\main.c(128,9): message : consider using '%lld' in the format string
+Z:\1. Research\maldevacademy\RemoteThreadHijacking\RemoteThreadHijacking\RemoteThreadHijacking\main.c(128,9): message : consider using '%Id' in the format string
+Z:\1. Research\maldevacademy\RemoteThreadHijacking\RemoteThreadHijacking\RemoteThreadHijacking\main.c(128,9): message : consider using '%I64d' in the format string
+Z:\1. Research\maldevacademy\RemoteThreadHijacking\RemoteThreadHijacking\RemoteThreadHijacking\main.c(113,9): warning C4047: 'initializing': 'SIZE_T' differs in levels of indirection from 'void *'
+Z:\1. Research\maldevacademy\RemoteThreadHijacking\RemoteThreadHijacking\RemoteThreadHijacking\main.c(114,8): warning C4047: 'initializing': 'DWORD' differs in levels of indirection from 'void *'
+Z:\1. Research\maldevacademy\RemoteThreadHijacking\RemoteThreadHijacking\RemoteThreadHijacking\main.c(164,16): warning C4047: '=': 'DWORD64' differs in levels of indirection from 'PVOID'
+Z:\1. Research\maldevacademy\RemoteThreadHijacking\RemoteThreadHijacking\RemoteThreadHijacking\main.c(189,9): warning C4047: 'initializing': 'DWORD' differs in levels of indirection from 'void *'
+  Generating code
+  Finished generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 11 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  RemoteThreadHijacking.vcxproj -> Z:\1. Research\maldevacademy\RemoteThreadHijacking\RemoteThreadHijacking\x64\Release\RemoteThreadHijacking.exe
