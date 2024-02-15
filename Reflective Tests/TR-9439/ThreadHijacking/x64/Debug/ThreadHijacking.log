@@ -1,2 +1,3 @@
 ﻿  main.cpp
+LINK : warning LNK4076: invalid incremental status file 'x64\Debug\ThreadHijacking.ilk' (which will be deleted); linking nonincrementally
   ThreadHijacking.vcxproj -> Z:\1. Research\Research\Reflective Tests\TR-9439\ThreadHijacking\x64\Debug\ThreadHijacking.exe
